@@ -209,7 +209,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
             tts.setSpeechRate((float) rate);
         }
 
-        tts.playSilentUtterance(delay*1000, TextToSpeech.QUEUE_FLUSH, null);
+        //tts.playSilentUtterance(delay*1000, TextToSpeech.QUEUE_FLUSH, null);
         tts.speak(text, TextToSpeech.QUEUE_ADD, ttsParams);
     }
 }
