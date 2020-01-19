@@ -90,7 +90,7 @@
        // see http://stackoverflow.com/questions/26097725/avspeechuterrance-speed-in-ios-8
     }
     utterance.pitchMultiplier = pitch;
-    utterance.preUtteranceDelay = delay;
+    //utterance.preUtteranceDelay = delay;
     [synthesizer speakUtterance:utterance];
 }
 
