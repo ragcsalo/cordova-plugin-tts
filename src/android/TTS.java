@@ -160,6 +160,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
         String text;
         String locale;
         double rate;
+        double delay;
 
         if (params.isNull("text")) {
             callbackContext.error(ERR_INVALID_OPTIONS);
@@ -178,6 +179,12 @@ public class TTS extends CordovaPlugin implements OnInitListener {
             rate = 1.0;
         } else {
             rate = params.getDouble("rate");
+        }
+
+        if (params.isNull("delay")) {
+            delay = 0;
+        } else {
+            delay = params.getDouble("delay");
         }
 
         if (tts == null) {
@@ -202,6 +209,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
             tts.setSpeechRate((float) rate);
         }
 
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, ttsParams);
+        tts.playSilentUtterance(delay*1000, TextToSpeech.QUEUE_FLUSH, null);
+        tts.speak(text, TextToSpeech.QUEUE_ADD, ttsParams);
     }
 }
